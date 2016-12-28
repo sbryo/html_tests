@@ -66,8 +66,6 @@ def reset(EMAIL):
 	    db = client.users
 	    collection = db.users
 	    cursor = db.users.find()
-	    email = flask.request.form['email']
-	    password = flask.request.form['password']
 	    for doc in cursor:
                 if str(doc['email']) == str(EMAIL):
                     mongo_id=doc['_id']
