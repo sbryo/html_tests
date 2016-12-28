@@ -62,7 +62,7 @@ def reset(EMAIL):
         if (flask.request.form['password1']) == flask.request.form['password2']:
             password = flask.request.form['password1']
             for doc in cursor:
-                if doc['email] == EMAIL:
+                if str(doc['email]) == str(EMAIL):
                     mongo_id=doc['_id']
                     post = collection.find_one({"_id":mongo_id})
                     post['password'] = password
