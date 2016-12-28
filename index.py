@@ -74,9 +74,9 @@ def reset(EMAIL):
                     collection.update({'_id':mongo_id}, {"$set": post}, upsert=False)
                     return flask.redirect('/reset_done')
         else:
-            return flask.render_template('reset_form_pass_alert.html')
+            return flask.render_template('reset_form_pass_alert.html',email=EMAIL)
     else:
-        return flask.render_template('reset_form_fields_alert.html')
+        return flask.render_template('reset_form_fields_alert.html',email=EMAIL)
     return flask.render_template("/reset_done")
 
 
