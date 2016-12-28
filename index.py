@@ -74,11 +74,9 @@ def reset(EMAIL):
                     collection.update({'_id':mongo_id}, {"$set": post}, upsert=False)
                     return flask.redirect('/reset_done')
         else:
-            #return template "passwords not equal ! "
-            return 
+            return flask.render_template('reset_form_pass_alert.html')
     else:
-        #return template "please fill all the fields"
-        return
+        return flask.render_template('reset_form_fields_alert.html')
     return flask.render_template("/reset_done")
 
 
