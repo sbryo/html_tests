@@ -61,7 +61,14 @@ def reset(EMAIL):
     if ("password1" in flask.request.form) and ("password2" in flask.request.form):
         if (flask.request.form['password1']) == flask.request.form['password2']:
             password = flask.request.form['password1']
-            for doc in cursor:
+	    client = MongoClient('ds019254.mlab.com', 19254)
+	    client.users.authenticate('shakedinero','a57821688')
+	    db = client.users
+	    collection = db.users
+	    cursor = db.users.find()
+	    email = flask.request.form['email']
+	    password = flask.request.form['password']
+	    for doc in cursor:
                 if str(doc['email']) == str(EMAIL):
                     mongo_id=doc['_id']
                     post = collection.find_one({"_id":mongo_id})
