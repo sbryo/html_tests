@@ -53,7 +53,7 @@ def reset_password(ID):
 	for doc in cursor:
         	if str(doc['_id']) == str(ID):
                 	email = str(doc['email'])
-	return flask.render_template('reset_form.html',email=email)
+	return flask.render_template("reset_form.html",email=email)
 
 
 @app.route("/reset/<EMAIL>",methods=['GET','POST'])
@@ -62,7 +62,7 @@ def reset(EMAIL):
         if (flask.request.form['password1']) == flask.request.form['password2']:
             password = flask.request.form['password1']
             for doc in cursor:
-                if str(doc['email]) == str(EMAIL):
+                if str(doc['email']) == str(EMAIL):
                     mongo_id=doc['_id']
                     post = collection.find_one({"_id":mongo_id})
                     post['password'] = password
@@ -74,7 +74,7 @@ def reset(EMAIL):
     else:
         #return template "please fill all the fields"
         return
-    return flask.render_template('/reset_done')
+    return flask.render_template("/reset_done")
 
 
 @app.route("/confirmed")
