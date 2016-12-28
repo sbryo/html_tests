@@ -52,7 +52,7 @@ def reset_password(ID):
     	cursor = db.users.find()
 	for doc in cursor:
         	if str(doc['_id']) == str(ID):
-                mail = str(doc['email'])
+                	mail = str(doc['email'])
 	return flask.render_template('reset_form.html',email=email)
 
 @app.route("/reset/<EMAIL>",methods=['GET','POST'])
